@@ -1263,16 +1263,16 @@
     /* HERO MOBILE — Variant B 45/55 */
     #hero { padding: 0; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; }
     .hero-inner { flex-direction: row; align-items: stretch; gap: 0; flex-wrap: nowrap; width: 100%; min-height: 100svh; padding: 0; max-width: 100%; }
-    .hero-portrait-wrap { width: 55%; flex-shrink: 0; position: relative; overflow: visible; }
+    .hero-portrait-wrap { width: 55%; flex-shrink: 0; position: relative; overflow: visible; order: 2; }
     .hero-portrait { width: 100%; height: 100%; aspect-ratio: unset; border-radius: 0; box-shadow: none; animation: none; opacity: 1; transform: none; overflow: hidden; }
-    .hero-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+    .hero-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; }
     .hero-portrait-wrap::before { display: none; }
     .hero-portrait-wrap::after { display: none; }
-    .hero-badge { width: 64px; height: 64px; right: -10px; bottom: 20px; animation: float 4s ease-in-out infinite; z-index: 10; }
-    .hero-badge span:first-child { font-size: 1rem; }
-    .hero-badge span:last-child { font-size: 0.42rem; }
+    .hero-badge { width: 60px; height: 60px; left: -10px; right: auto; bottom: 20px; animation: float 4s ease-in-out infinite; z-index: 10; }
+    .hero-badge span:first-child { font-size: 0.95rem; }
+    .hero-badge span:last-child { font-size: 0.38rem; }
     .hero-divider { display: none; }
-    .hero-text { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 5.5rem 1.3rem 1.5rem; background: var(--ivory-dark); }
+    .hero-text { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 5.5rem 1rem 1.5rem 1.3rem; background: var(--ivory-dark); order: 1; }
     .hero-eyebrow { font-size: 0.6rem; letter-spacing: 0.14em; margin-bottom: 1rem; animation: none; opacity: 1; transform: none; }
     .hero-eyebrow::before { width: 20px; }
     .hero-title { font-size: clamp(1.5rem, 6vw, 2rem); margin-bottom: 0.9rem; animation: none; opacity: 1; transform: none; line-height: 1.15; }
