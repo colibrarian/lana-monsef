@@ -900,7 +900,6 @@
     font-family: var(--font-sans);
     font-size: 1rem;
     font-weight: 300;
-    font-style: normal;
     letter-spacing: 0.08em;
     color: var(--taupe-dark);
     position: relative;
@@ -1151,6 +1150,8 @@
   footer {
     background: var(--text-dark);
     padding: 60px 5vw 40px;
+    position: relative;
+    z-index: 8500;
     color: rgba(245,240,232,0.6);
   }
   .footer-inner {
@@ -1247,7 +1248,6 @@
     .spec-header { grid-template-columns: 1fr; }
     nav { padding: 0 4vw; }
     .nav-links { display: none; }
-    /* Stabilise decorative overflows on tablet */
     .about-image-wrap::before { left: -10px; top: -10px; right: 10px; bottom: -10px; }
     .about-image-wrap::after { display: none; }
     .methods-image-caption { position: relative; left: auto; bottom: auto; margin-top: 1rem; max-width: 100%; }
@@ -1256,155 +1256,41 @@
     .contact-form-wrap::before { display: none; }
   }
 
-
   @media (max-width: 640px) {
     body { overflow-x: hidden; }
     section { overflow-x: hidden; }
 
-    /* ── HERO MOBILE: Вариант Б 45/55 ── */
-    #hero {
-      padding: 0;
-      min-height: 100svh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-    }
-    .hero-inner {
-      flex-direction: row;
-      align-items: stretch;
-      gap: 0;
-      flex-wrap: nowrap;
-      width: 100%;
-      min-height: 100svh;
-      padding: 0;
-      max-width: 100%;
-    }
-
-    /* Left portrait column 45% */
-    .hero-portrait-wrap {
-      width: 45%;
-      flex-shrink: 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-portrait {
-      width: 100%;
-      height: 100%;
-      aspect-ratio: unset;
-      border-radius: 0;
-      box-shadow: none;
-      animation: none;
-      opacity: 1;
-      transform: none;
-    }
-    .hero-portrait img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-    }
+    /* HERO MOBILE — Variant B 45/55 */
+    #hero { padding: 0; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; }
+    .hero-inner { flex-direction: row; align-items: stretch; gap: 0; flex-wrap: nowrap; width: 100%; min-height: 100svh; padding: 0; max-width: 100%; }
+    .hero-portrait-wrap { width: 45%; flex-shrink: 0; position: relative; overflow: hidden; }
+    .hero-portrait { width: 100%; height: 100%; aspect-ratio: unset; border-radius: 0; box-shadow: none; animation: none; opacity: 1; transform: none; }
+    .hero-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
     .hero-portrait-wrap::before { display: none; }
     .hero-portrait-wrap::after { display: none; }
-
-    /* Badge repositioned inside portrait, bottom-right */
-    .hero-badge {
-      width: 64px;
-      height: 64px;
-      right: -8px;
-      bottom: 24px;
-      animation: float 4s ease-in-out infinite;
-    }
+    .hero-badge { width: 64px; height: 64px; right: -8px; bottom: 24px; animation: float 4s ease-in-out infinite; }
     .hero-badge span:first-child { font-size: 1rem; }
     .hero-badge span:last-child { font-size: 0.42rem; }
-
-    /* Divider hidden */
     .hero-divider { display: none; }
-
-    /* Right text column 55% */
-    .hero-text {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 5.5rem 1.3rem 1.5rem;
-      background: var(--ivory-dark);
-    }
-
-    .hero-eyebrow {
-      font-size: 0.6rem;
-      letter-spacing: 0.14em;
-      margin-bottom: 1rem;
-      animation: none;
-      opacity: 1;
-      transform: none;
-    }
+    .hero-text { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 5.5rem 1.3rem 1.5rem; background: var(--ivory-dark); }
+    .hero-eyebrow { font-size: 0.6rem; letter-spacing: 0.14em; margin-bottom: 1rem; animation: none; opacity: 1; transform: none; }
     .hero-eyebrow::before { width: 20px; }
-
-    .hero-title {
-      font-size: clamp(1.5rem, 6vw, 2rem);
-      margin-bottom: 0.9rem;
-      animation: none;
-      opacity: 1;
-      transform: none;
-      line-height: 1.15;
-    }
+    .hero-title { font-size: clamp(1.5rem, 6vw, 2rem); margin-bottom: 0.9rem; animation: none; opacity: 1; transform: none; line-height: 1.15; }
     .hero-title em { display: inline; }
+    .hero-sub { font-size: 0.75rem; line-height: 1.65; margin-bottom: 1.4rem; animation: none; opacity: 1; transform: none; }
+    .hero-actions { flex-direction: column; gap: 0.6rem; animation: none; opacity: 1; transform: none; }
+    .hero-actions .btn-primary, .hero-actions .btn-outline { font-size: 0.62rem; padding: 0.75rem 1rem; text-align: center; width: 100%; }
+    #heroLocationBar { display: block; background: var(--taupe-dark); color: var(--ivory); font-family: var(--font-sans); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; text-align: center; padding: 0.65rem; }
+    #hero::after { display: none; }
 
-    .hero-sub {
-      font-size: 0.75rem;
-      line-height: 1.65;
-      margin-bottom: 1.4rem;
-      animation: none;
-      opacity: 1;
-      transform: none;
-    }
-
-    .hero-actions {
-      flex-direction: column;
-      gap: 0.6rem;
-      animation: none;
-      opacity: 1;
-      transform: none;
-    }
-    .hero-actions .btn-primary,
-    .hero-actions .btn-outline {
-      font-size: 0.62rem;
-      padding: 0.75rem 1rem;
-      text-align: center;
-      width: 100%;
-    }
-
-    /* Bottom location bar */
-    #hero::after {
-      content: 'Рига · Лондон · Онлайн';
-      display: block;
-      background: var(--taupe-dark);
-      color: var(--ivory);
-      font-family: var(--font-sans);
-      font-size: 0.6rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      text-align: center;
-      padding: 0.65rem;
-    }
-
-    /* ── OTHER SECTIONS ── */
+    /* OTHER SECTIONS */
     .about-image-wrap::before { display: none; }
     .about-image-wrap::after { display: none; }
     .about-image-wrap img { height: 340px; }
-
     .methods-image img { height: 320px; }
-    .methods-image-caption {
-      position: relative;
-      left: auto; bottom: auto;
-      margin-top: 1rem;
-      max-width: 100%;
-      padding: 1.2rem 1.5rem;
-    }
-
+    .methods-image-caption { position: relative; left: auto; bottom: auto; margin-top: 1rem; max-width: 100%; padding: 1.2rem 1.5rem; }
     .contact-form-wrap::before { display: none; }
     .contact-form-wrap { padding: 1.8rem; }
-
     .process-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
     .spec-grid { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
@@ -1423,6 +1309,193 @@
     transform: translate(-50%, -50%);
     transition: left 0.6s cubic-bezier(0.25,0.46,0.45,0.94), top 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
   }
+
+  /* ── LANG SWITCHER ── */
+  .lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-left: 1.5rem;
+  }
+  .lang-btn {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem 0.4rem;
+    border-radius: 2px;
+    transition: color 0.25s, background 0.25s;
+    line-height: 1;
+  }
+  .lang-btn.active { color: var(--text-dark); font-weight: 500; }
+  .lang-btn:hover:not(.active) { color: var(--text-mid); }
+  .lang-sep { color: var(--border); font-size: 0.7rem; }
+
+  /* footer lang switcher */
+  .lang-switcher-footer {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+  .lang-switcher-footer .lang-btn { color: rgba(245,240,232,0.4); }
+  .lang-switcher-footer .lang-btn.active { color: var(--gold-light); }
+  .lang-switcher-footer .lang-sep { color: rgba(245,240,232,0.2); }
+
+  /* ── MODALS ── */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(58,48,40,0.55);
+    backdrop-filter: blur(6px);
+    z-index: 9000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s;
+  }
+  .modal-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .modal-box {
+    background: var(--warm-white);
+    width: 100%;
+    max-width: 680px;
+    max-height: 85vh;
+    border-radius: 4px;
+    overflow-y: auto;
+    padding: 3rem 3.5rem 3.5rem;
+    position: relative;
+    transform: translateY(20px) scale(0.98);
+    transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  .modal-overlay.open .modal-box {
+    transform: translateY(0) scale(1);
+  }
+  .modal-close {
+    position: absolute;
+    top: 1.5rem; right: 1.5rem;
+    width: 36px; height: 36px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    color: var(--text-mid);
+    transition: background 0.2s;
+  }
+  .modal-close:hover { background: var(--ivory-dark); }
+  .modal-box h2 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--text-dark);
+    margin-bottom: 0.4rem;
+  }
+  .modal-box h2 em { font-style: italic; color: var(--taupe-dark); }
+  .modal-box .modal-date {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .modal-box h3 {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    margin: 1.8rem 0 0.5rem;
+  }
+  .modal-box p, .modal-box li {
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    line-height: 1.8;
+    color: var(--text-mid);
+  }
+  .modal-box ul { padding-left: 1.2rem; margin: 0.5rem 0; }
+  .modal-box li { margin-bottom: 0.3rem; }
+
+  /* ── COOKIE BANNER ── */
+  .cookie-banner {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--text-dark);
+    z-index: 8000;
+    padding: 1.5rem 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  .cookie-banner.visible { transform: translateY(0); }
+  .cookie-text {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: rgba(245,240,232,0.75);
+    max-width: 600px;
+  }
+  .cookie-text a {
+    color: var(--gold-light);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .cookie-actions {
+    display: flex;
+    gap: 0.8rem;
+    flex-shrink: 0;
+  }
+  .cookie-accept {
+    background: var(--gold);
+    color: var(--text-dark);
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border: none;
+    padding: 0.75rem 1.6rem;
+    border-radius: 1px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .cookie-accept:hover { background: var(--gold-light); }
+  .cookie-decline {
+    background: transparent;
+    color: rgba(245,240,232,0.5);
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border: 1px solid rgba(245,240,232,0.2);
+    padding: 0.75rem 1.2rem;
+    border-radius: 1px;
+    cursor: pointer;
+    transition: border-color 0.3s, color 0.3s;
+  }
+  .cookie-decline:hover { border-color: rgba(245,240,232,0.4); color: rgba(245,240,232,0.8); }
+
+  @media (max-width: 640px) {
+    .modal-box { padding: 2rem 1.5rem 2.5rem; }
+    .cookie-banner { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1.2rem 5vw; }
+    .lang-switcher { margin-left: 0.5rem; }
+  }
+
 </style>
 </head>
 <body>
@@ -1433,14 +1506,21 @@
 
 <!-- NAV -->
 <nav id="mainNav">
-  <a href="#hero" class="nav-logo">Лана <span>Монсеф</span></a>
-  <ul class="nav-links">
-    <li><a href="#about">Обо мне</a></li>
-    <li><a href="#specializations">Направления</a></li>
-    <li><a href="#services">Услуги</a></li>
-    <li><a href="#process">Как это работает</a></li>
-    <li><a href="#contact" class="nav-cta">Записаться</a></li>
+  <a href="#hero" class="nav-logo" id="navLogo">Лана <span>Монсеф</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about" data-i18n="nav_about">Обо мне</a></li>
+    <li><a href="#specializations" data-i18n="nav_spec">Направления</a></li>
+    <li><a href="#services" data-i18n="nav_services">Услуги</a></li>
+    <li><a href="#process" data-i18n="nav_process">Как это работает</a></li>
+    <li><a href="#contact" class="nav-cta" data-i18n="nav_cta">Записаться</a></li>
   </ul>
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('ru')">RU</button>
+    <span class="lang-sep">·</span>
+    <button class="lang-btn" onclick="setLang('lv')">LV</button>
+    <span class="lang-sep">·</span>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
 </nav>
 
 
@@ -1449,11 +1529,11 @@
   <div class="hero-inner">
     <div class="hero-portrait-wrap">
       <div class="hero-portrait">
-        <img src="https://ik.imagekit.io/xwsgpirygo/Lana%20Monsef/lana%203.jpeg" alt="Лана Монсеф — психолог">
+        <img src="https://ik.imagekit.io/xwsgpirygo/Lana%20Monsef/lana%204.jpeg" alt="Лана Монсеф — психолог">
       </div>
       <div class="hero-badge">
         <span>10+</span>
-        <span>лет практики</span>
+        <span data-i18n="badge_years">лет практики</span>
       </div>
     </div>
 
@@ -1462,24 +1542,25 @@
 
 
     <div class="hero-text">
-      <p class="hero-eyebrow">Психолог · Психотерапевт · Рига &amp; Лондон</p>
-      <h1 class="hero-title">
+      <p class="hero-eyebrow" data-i18n="hero_eyebrow">Рекурсивный психолог · Рига &amp; Лондон</p>
+      <h1 class="hero-title" id="heroTitle">
         Ваше безопасное<br>
         <em>пространство</em> для роста
       </h1>
-      <p class="hero-sub">Я Лана Монсеф — практикующий психолог и психотерапевт. Помогаю людям понять себя, справиться с тревогой и найти внутренний баланс. Консультации онлайн и очно в Риге и Лондоне.</p>
+      <p class="hero-sub" data-i18n="hero_sub">Я Лана Монсеф — практикующий рекурсивный психолог. Помогаю людям понять себя, справиться с тревогой и найти внутренний баланс. Консультации онлайн и очно в Риге и Лондоне.</p>
       <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Записаться на приём</a>
-        <a href="#about" class="btn-outline">Узнать больше</a>
+        <a href="#contact" class="btn-primary" data-i18n="hero_btn_primary">Записаться на приём</a>
+        <a href="#about" class="btn-outline" data-i18n="hero_btn_outline">Узнать больше</a>
       </div>
     </div>
   </div>
 </section>
 
 
+<div id="heroLocationBar" style="display:none;" data-i18n="hero_location_bar">Рига · Лондон · Онлайн</div>
 <!-- MARQUEE -->
 <div class="marquee-wrap">
-  <div class="marquee-track">
+  <div class="marquee-track" id="marqueeTrack">
     <span>Тревожность</span>
     <span>Панические атаки</span>
     <span>ПТСР</span>
@@ -1511,27 +1592,27 @@
       <img src="https://ik.imagekit.io/xwsgpirygo/Lana%20Monsef/lana%202.jpeg" alt="Лана Монсеф">
     </div>
     <div class="about-content">
-      <p class="section-label reveal">Обо мне</p>
-      <h2 class="section-title reveal reveal-delay-1">
-        Практикующий<br>
-        <em>психолог</em> с душой
+      <p class="section-label reveal" data-i18n="about_label">Обо мне</p>
+      <h2 class="section-title reveal reveal-delay-1" id="aboutTitle">
+        С душой<br>
+        <em>и опытом</em>
       </h2>
-      <p class="about-text reveal reveal-delay-2">
-        Я практикующий психолог и рекурсивный психотерапевт. Моя практика строится на доверии, уважении и искреннем желании помочь каждому клиенту. Я убеждена: каждый человек обладает внутренними ресурсами для роста — моя задача помочь их раскрыть.
+      <p class="about-text reveal reveal-delay-2" data-i18n="about_text1">
+        Моя практика строится на доверии, уважении и искреннем желании помочь каждому клиенту. Я убеждена: каждый человек обладает внутренними ресурсами для роста — моя задача помочь их раскрыть.
       </p>
-      <blockquote class="about-quote reveal reveal-delay-2">
+      <blockquote class="about-quote reveal reveal-delay-2" data-i18n="about_quote">
         «Обращение за помощью — это не слабость. Это мужество заботиться о себе.»
       </blockquote>
-      <p class="about-text reveal reveal-delay-3">
+      <p class="about-text reveal reveal-delay-3" data-i18n="about_text2">
         Работаю с широким спектром психологических запросов: тревожность, стресс, страхи, панические атаки, эмоциональное выгорание, сложности в отношениях. Использую доказательные методы психотерапии без медикаментов, адаптируя подход под каждого человека индивидуально.
       </p>
       <div class="about-tags reveal reveal-delay-4">
-        <span class="tag">КПТ</span>
-        <span class="tag">Арт-терапия</span>
-        <span class="tag">Аутотренинг</span>
-        <span class="tag">Релаксационные техники</span>
-        <span class="tag">Саморегуляция</span>
-        <span class="tag">Клиническая беседа</span>
+        <span class="tag" data-i18n="tag1">КПТ</span>
+        <span class="tag" data-i18n="tag2">Арт-терапия</span>
+        <span class="tag" data-i18n="tag3">Аутотренинг</span>
+        <span class="tag" data-i18n="tag4">Релаксационные техники</span>
+        <span class="tag" data-i18n="tag5">Саморегуляция</span>
+        <span class="tag" data-i18n="tag6">Клиническая беседа</span>
       </div>
     </div>
   </div>
@@ -1542,46 +1623,42 @@
 <section id="specializations">
   <div class="spec-header">
     <div>
-      <p class="section-label reveal">Направления работы</p>
-      <h2 class="section-title reveal reveal-delay-1">
+      <p class="section-label reveal" data-i18n="spec_label">Направления работы</p>
+      <h2 class="section-title reveal reveal-delay-1" id="specTitle">
         С чем я<br><em>помогаю</em>
       </h2>
     </div>
-    <p class="spec-desc reveal reveal-delay-2">
+    <p class="spec-desc reveal reveal-delay-2" data-i18n="spec_intro">
       Каждый запрос уникален — и именно с этим я работаю. Не знаете, как назвать своё состояние? Не страшно. Напишите мне, и вместе мы найдём точку входа.
     </p>
   </div>
   <div class="spec-grid">
     <div class="spec-card reveal">
       <span class="spec-icon">①</span>
-      <div class="spec-name">Тревога и неврозы</div>
-      <p class="spec-desc-card">Тревожность, постоянное напряжение, навязчивые мысли, ОКР — помогаю найти причину состояния и выработать устойчивые стратегии.</p>
+      <div class="spec-name" data-i18n="spec1_name">Тревога и неврозы</div>
+      <p class="spec-desc-card" data-i18n="spec1_desc">Тревожность, постоянное напряжение, навязчивые мысли, ОКР — помогаю найти причину состояния и выработать устойчивые стратегии.</p>
     </div>
     <div class="spec-card reveal reveal-delay-1">
       <span class="spec-icon">②</span>
-      <div class="spec-name">Панические атаки и фобии</div>
-      <p class="spec-desc-card">Страх смерти, страх потери контроля, полётов, высоты, социальные страхи — работаю с телесными и когнитивными проявлениями.</p>
+      <div class="spec-name" data-i18n="spec2_name">Панические атаки и фобии</div>
+      <p class="spec-desc-card" data-i18n="spec2_desc">Страх смерти, страх потери контроля, полётов, высоты, социальные страхи — работаю с телесными и когнитивными проявлениями.</p>
     </div>
     <div class="spec-card reveal reveal-delay-2">
       <span class="spec-icon">③</span>
-      <div class="spec-name">ПТСР и психотравмы</div>
-      <p class="spec-desc-card">Психологическая помощь после травматических событий: снижение тревоги, восстановление эмоциональной стабильности и чувства безопасности.</p>
+      <div class="spec-name" data-i18n="spec3_name">ПТСР и психотравмы</div>
+      <p class="spec-desc-card" data-i18n="spec3_desc">Психологическая помощь после травматических событий: снижение тревоги, восстановление эмоциональной стабильности и чувства безопасности.</p>
     </div>
     <div class="spec-card reveal reveal-delay-1">
       <span class="spec-icon">④</span>
-      <div class="spec-name">Стресс и выгорание</div>
-      <p class="spec-desc-card">Хроническая усталость, бессонница, эмоциональное истощение — помогаю восстановить баланс и вернуть ощущение смысла.</p>
+      <div class="spec-name" data-i18n="spec4_name">Стресс и выгорание</div>
+      <p class="spec-desc-card" data-i18n="spec4_desc">Хроническая усталость, бессонница, эмоциональное истощение — помогаю восстановить баланс и вернуть ощущение смысла.</p>
     </div>
     <div class="spec-card reveal reveal-delay-2">
       <span class="spec-icon">⑤</span>
-      <div class="spec-name">Отношения и семья</div>
-      <p class="spec-desc-card">Конфликты в паре, сложности в общении, неуверенность в себе, социофобия — работаем с корневыми причинами и строим новые паттерны.</p>
+      <div class="spec-name" data-i18n="spec5_name">Отношения и семья</div>
+      <p class="spec-desc-card" data-i18n="spec5_desc">Конфликты в паре, сложности в общении, неуверенность в себе, социофобия — работаем с корневыми причинами и строим новые паттерны.</p>
     </div>
-    <div class="spec-card reveal reveal-delay-3">
-      <span class="spec-icon">⑥</span>
-      <div class="spec-name">Онкология и утрата</div>
-      <p class="spec-desc-card">Сопровождение онкопациентов в ремиссии и их близких: работа со страхами, горем и экзистенциальной тревогой.</p>
-    </div>
+
   </div>
 </section>
 
@@ -1590,41 +1667,41 @@
 <section id="methods">
   <div class="methods-inner">
     <div>
-      <p class="section-label reveal">Как я работаю</p>
-      <h2 class="section-title reveal reveal-delay-1">
+      <p class="section-label reveal" data-i18n="methods_label">Как я работаю</p>
+      <h2 class="section-title reveal reveal-delay-1" id="methodsTitle">
         Методы<br><em>терапии</em>
       </h2>
-      <p class="about-text reveal reveal-delay-2" style="margin-top:1.5rem;">
+      <p class="about-text reveal reveal-delay-2" style="margin-top:1.5rem;" data-i18n="methods_intro">
         В своей работе я использую современные научно обоснованные методы психологического консультирования и психотерапии — без медикаментов. Подход всегда адаптируется под конкретного человека.
       </p>
       <div class="methods-list">
         <div class="method-item reveal reveal-delay-1">
           <span class="method-num">01</span>
-          <div class="method-text"><strong>Когнитивно-поведенческая терапия (КПТ)</strong>Работа с мышлением и поведенческими паттернами, формирующими тревогу и стресс.</div>
+          <div class="method-text" data-i18n="method1"><strong>Когнитивно-поведенческая терапия (КПТ)</strong>Работа с мышлением и поведенческими паттернами, формирующими тревогу и стресс.</div>
         </div>
         <div class="method-item reveal reveal-delay-2">
           <span class="method-num">02</span>
-          <div class="method-text"><strong>Клиническая беседа</strong>Глубокое исследование внутреннего мира клиента — основа для понимания причин состояния.</div>
+          <div class="method-text" data-i18n="method2"><strong>Клиническая беседа</strong>Глубокое исследование внутреннего мира клиента — основа для понимания причин состояния.</div>
         </div>
         <div class="method-item reveal reveal-delay-3">
           <span class="method-num">03</span>
-          <div class="method-text"><strong>Техники релаксации и аутотренинг</strong>Практические инструменты для управления тревогой и стрессом в повседневной жизни.</div>
+          <div class="method-text" data-i18n="method3"><strong>Техники релаксации и аутотренинг</strong>Практические инструменты для управления тревогой и стрессом в повседневной жизни.</div>
         </div>
         <div class="method-item reveal reveal-delay-4">
           <span class="method-num">04</span>
-          <div class="method-text"><strong>Арт-терапия</strong>Творческое выражение как путь к осознанию глубинных переживаний.</div>
+          <div class="method-text" data-i18n="method4"><strong>Арт-терапия</strong>Творческое выражение как путь к осознанию глубинных переживаний.</div>
         </div>
         <div class="method-item reveal reveal-delay-5">
           <span class="method-num">05</span>
-          <div class="method-text"><strong>Психологическая саморегуляция</strong>Обучение навыкам, которые работают за рамками терапии — в реальной жизни.</div>
+          <div class="method-text" data-i18n="method5"><strong>Психологическая саморегуляция</strong>Обучение навыкам, которые работают за рамками терапии — в реальной жизни.</div>
         </div>
       </div>
     </div>
     <div class="methods-image reveal reveal-delay-2">
       <img src="https://ik.imagekit.io/xwsgpirygo/Lana%20Monsef/lana.png" alt="Кабинет психолога">
       <div class="methods-image-caption">
-        <p>«Понять себя — первый шаг к свободе»</p>
-        <small>Лана Монсеф</small>
+        <p data-i18n="methods_caption">«Понять себя — первый шаг к свободе»</p>
+        <small id="captionAuthor">Лана Монсеф</small>
       </div>
     </div>
   </div>
@@ -1634,52 +1711,52 @@
 <!-- SERVICES & PRICING -->
 <section id="services">
   <div class="services-inner">
-    <p class="section-label reveal">Услуги и цены</p>
-    <h2 class="section-title reveal reveal-delay-1">
+    <p class="section-label reveal" data-i18n="services_label">Услуги и цены</p>
+    <h2 class="section-title reveal reveal-delay-1" id="servicesTitle">
       Форматы работы<br><em>и стоимость</em>
     </h2>
     <div class="pricing-grid">
       <div class="pricing-card reveal">
-        <p class="pricing-label">Онлайн</p>
-        <h3 class="pricing-name">Онлайн-консультация</h3>
-        <p class="pricing-location">WhatsApp / Zoom · Весь мир</p>
-        <div class="pricing-price"><sup>€</sup>60</div>
-        <p class="pricing-per">60 минут · одна сессия</p>
+        <p class="pricing-label" data-i18n="price1_label">Онлайн</p>
+        <h3 class="pricing-name" data-i18n="price1_name">Онлайн-консультация</h3>
+        <p class="pricing-location" data-i18n="price1_loc">WhatsApp / Zoom · Весь мир</p>
+        <div class="pricing-price"><sup>€</sup>65</div>
+        <p class="pricing-per" data-i18n="price_per">60 минут · одна сессия</p>
         <ul class="pricing-features">
-          <li>Индивидуальный формат</li>
-          <li>Любая точка мира</li>
-          <li>WhatsApp или Zoom</li>
-          <li>Конфиденциально</li>
+          <li data-i18n="price1_f1">Индивидуальный формат</li>
+          <li data-i18n="price1_f2">Любая точка мира</li>
+          <li data-i18n="price1_f3">WhatsApp или Zoom</li>
+          <li data-i18n="price1_f4">Конфиденциально</li>
         </ul>
-        <a href="#contact" class="pricing-btn">Записаться</a>
+        <a href="#contact" class="pricing-btn" data-i18n="pricing_btn">Записаться</a>
       </div>
       <div class="pricing-card featured reveal reveal-delay-1">
-        <p class="pricing-label">Очно · Рига</p>
-        <h3 class="pricing-name">Приём в Риге</h3>
-        <p class="pricing-location">Тихий центр, Латвия</p>
+        <p class="pricing-label" data-i18n="price2_label">Очно · Рига</p>
+        <h3 class="pricing-name" data-i18n="price2_name">Приём в Риге</h3>
+        <p class="pricing-location" data-i18n="price2_loc">Тихий центр, Латвия</p>
         <div class="pricing-price"><sup>€</sup>85</div>
-        <p class="pricing-per">60 минут · одна сессия</p>
+        <p class="pricing-per" data-i18n="price_per">60 минут · одна сессия</p>
         <ul class="pricing-features">
-          <li>Уютный кабинет в центре Риги</li>
-          <li>Атмосфера полной безопасности</li>
-          <li>Индивидуальный подход</li>
-          <li>Возможны регулярные встречи</li>
+          <li data-i18n="price2_f1">Уютный кабинет в центре Риги</li>
+          <li data-i18n="price2_f2">Атмосфера полной безопасности</li>
+          <li data-i18n="price2_f3">Индивидуальный подход</li>
+          <li data-i18n="price2_f4">Возможны регулярные встречи</li>
         </ul>
-        <a href="#contact" class="pricing-btn">Записаться</a>
+        <a href="#contact" class="pricing-btn" data-i18n="pricing_btn">Записаться</a>
       </div>
       <div class="pricing-card reveal reveal-delay-2">
-        <p class="pricing-label">Очно · Лондон</p>
-        <h3 class="pricing-name">Приём в Лондоне</h3>
-        <p class="pricing-location">London, United Kingdom</p>
-        <div class="pricing-price"><sup>£</sup>145</div>
-        <p class="pricing-per">60 минут · одна сессия</p>
+        <p class="pricing-label" data-i18n="price3_label">Очно · Лондон</p>
+        <h3 class="pricing-name" data-i18n="price3_name">Приём в Лондоне</h3>
+        <p class="pricing-location" data-i18n="price3_loc">London, United Kingdom</p>
+        <div class="pricing-price"><sup>£</sup>155</div>
+        <p class="pricing-per" data-i18n="price_per">60 минут · одна сессия</p>
         <ul class="pricing-features">
-          <li>Личная встреча в Лондоне</li>
-          <li>Профессиональная обстановка</li>
-          <li>Индивидуальный подход</li>
-          <li>Возможны регулярные встречи</li>
+          <li data-i18n="price3_f1">Личная встреча в Лондоне</li>
+          <li data-i18n="price3_f2">Профессиональная обстановка</li>
+          <li data-i18n="price3_f3">Индивидуальный подход</li>
+          <li data-i18n="price3_f4">Возможны регулярные встречи</li>
         </ul>
-        <a href="#contact" class="pricing-btn">Записаться</a>
+        <a href="#contact" class="pricing-btn" data-i18n="pricing_btn">Записаться</a>
       </div>
     </div>
   </div>
@@ -1690,29 +1767,29 @@
 <section id="process">
   <div class="process-inner">
     <div style="text-align:center; max-width:600px; margin:0 auto;">
-      <p class="section-label reveal" style="justify-content:center;">Как это работает</p>
-      <h2 class="section-title reveal reveal-delay-1">Ваш путь<br><em>к поддержке</em></h2>
+      <p class="section-label reveal" style="justify-content:center;" data-i18n="process_label">Как это работает</p>
+      <h2 class="section-title reveal reveal-delay-1" id="processTitle">Ваш путь<br><em>к поддержке</em></h2>
     </div>
     <div class="process-steps">
       <div class="process-step reveal">
         <div class="step-dot">1</div>
-        <div class="step-title">Заявка</div>
-        <p class="step-desc">Заполните форму или напишите в WhatsApp. Я отвечу в течение нескольких часов.</p>
+        <div class="step-title" data-i18n="step1_title">Заявка</div>
+        <p class="step-desc" data-i18n="step1_desc">Заполните форму или напишите в WhatsApp. Я отвечу в течение нескольких часов.</p>
       </div>
       <div class="process-step reveal reveal-delay-1">
         <div class="step-dot">2</div>
-        <div class="step-title">Знакомство</div>
-        <p class="step-desc">Первая беседа — знакомство, обсуждение вашего запроса и подбор формата работы.</p>
+        <div class="step-title" data-i18n="step2_title">Знакомство</div>
+        <p class="step-desc" data-i18n="step2_desc">Первая беседа — знакомство, обсуждение вашего запроса и подбор формата работы.</p>
       </div>
       <div class="process-step reveal reveal-delay-2">
         <div class="step-dot">3</div>
-        <div class="step-title">Сессии</div>
-        <p class="step-desc">Регулярные встречи — онлайн или очно. Частота подбирается индивидуально.</p>
+        <div class="step-title" data-i18n="step3_title">Сессии</div>
+        <p class="step-desc" data-i18n="step3_desc">Регулярные встречи — онлайн или очно. Частота подбирается индивидуально.</p>
       </div>
       <div class="process-step reveal reveal-delay-3">
         <div class="step-dot">4</div>
-        <div class="step-title">Результат</div>
-        <p class="step-desc">Вы замечаете изменения, учитесь управлять собой и обретаете внутреннее спокойствие.</p>
+        <div class="step-title" data-i18n="step4_title">Результат</div>
+        <p class="step-desc" data-i18n="step4_desc">Вы замечаете изменения, учитесь управлять собой и обретаете внутреннее спокойствие.</p>
       </div>
     </div>
   </div>
@@ -1723,34 +1800,27 @@
 <section id="contact">
   <div class="contact-inner">
     <div class="contact-info">
-      <p class="section-label reveal">Контакты</p>
-      <h2 class="section-title reveal reveal-delay-1">
+      <p class="section-label reveal" data-i18n="contact_label">Контакты</p>
+      <h2 class="section-title reveal reveal-delay-1" id="contactTitle">
         Начните<br>
         <em>прямо сейчас</em>
       </h2>
-      <p class="contact-tagline reveal reveal-delay-2">
+      <p class="contact-tagline reveal reveal-delay-2" data-i18n="contact_tagline">
         Если вы чувствуете, что вам нужна поддержка — не откладывайте заботу о себе. Напишите мне, и мы найдём удобный формат работы.
       </p>
       <div class="contact-details reveal reveal-delay-2">
         <div class="contact-item">
-          <div class="contact-item-icon">📱</div>
-          <div class="contact-item-text">
-            <span>WhatsApp</span>
-            <a href="https://wa.me/message" target="_blank">Написать в WhatsApp</a>
-          </div>
-        </div>
-        <div class="contact-item">
           <div class="contact-item-icon">📍</div>
           <div class="contact-item-text">
-            <span>Очный приём</span>
-            <p>Рига (Латвия) · Лондон (Великобритания)</p>
+            <span data-i18n="ci_inperson">Очный приём</span>
+            <p data-i18n="ci_locations">Рига (Латвия) · Лондон (Великобритания)</p>
           </div>
         </div>
         <div class="contact-item">
           <div class="contact-item-icon">🌐</div>
           <div class="contact-item-text">
-            <span>Онлайн</span>
-            <p>Консультации для клиентов по всему миру</p>
+            <span data-i18n="ci_online_label">Онлайн</span>
+            <p data-i18n="ci_online_text">Консультации для клиентов по всему миру</p>
           </div>
         </div>
       </div>
@@ -1763,56 +1833,52 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
           WhatsApp
         </a>
-        <a href="tel:+44 7454 166006" class="social-link">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          Телефон
-        </a>
+
       </div>
     </div>
 
 
     <div class="contact-form-wrap reveal reveal-delay-2">
       <div id="formArea">
-        <h3 class="form-title">Записаться на консультацию</h3>
-        <p class="form-subtitle">Я свяжусь с вами в течение нескольких часов</p>
+        <h3 class="form-title" data-i18n="form_title">Записаться на консультацию</h3>
+        <p class="form-subtitle" data-i18n="form_subtitle">Я свяжусь с вами в течение дня</p>
         <div class="form-row">
           <div class="form-group">
-            <label>Ваше имя</label>
-            <input type="text" placeholder="Как к вам обращаться?">
+            <label data-i18n="fl_name">Ваше имя</label>
+            <input type="text" id="inp_name" placeholder="Как к вам обращаться?">
           </div>
           <div class="form-group">
-            <label>Телефон / WhatsApp</label>
-            <input type="tel" placeholder="Номер">
+            <label data-i18n="fl_phone">Телефон / WhatsApp</label>
+            <input type="tel" id="inp_phone" placeholder="Номер">
           </div>
         </div>
         <div class="form-group">
-          <label>Электронная почта</label>
-          <input type="email" placeholder="name@gmail.com">
+          <label data-i18n="fl_email">Электронная почта</label>
+          <input type="email" id="inp_email" placeholder="name@gmail.com">
         </div>
         <div class="form-group">
-          <label>Формат консультации</label>
+          <label data-i18n="fl_topic">Формат консультации</label>
           <select>
-            <option value="">Выберите тему</option>
-            <option>Тревога и неврозы</option>
-            <option>Панические атаки и фобии</option>
-            <option>ПТСР и психотравмы</option>
-<option>Стресс и выгорание</option>
-            <option>Отношения и семья</option>
-            <option>Онкология и утрата</option>
+            <option value="" data-i18n="opt0">Выберите тему</option>
+            <option data-i18n="opt1">Тревога и неврозы</option>
+            <option data-i18n="opt2">Панические атаки и фобии</option>
+            <option data-i18n="opt3">ПТСР и психотравмы</option>
+            <option data-i18n="opt4">Стресс и выгорание</option>
+            <option data-i18n="opt5">Отношения и семья</option>
 
 
           </select>
         </div>
         <div class="form-group">
-          <label>Расскажите немного о себе (необязательно)</label>
-          <textarea placeholder="Что вас беспокоит? "></textarea>
+          <label data-i18n="fl_message">Расскажите немного о себе (необязательно)</label>
+          <textarea id="inp_message" placeholder="Что вас беспокоит?"></textarea>
         </div>
-        <button class="form-submit" onclick="submitForm()">Отправить заявку</button>
+        <button class="form-submit" onclick="submitForm()" data-i18n="form_submit">Отправить заявку</button>
       </div>
       <div class="form-success" id="formSuccess">
         <div class="check">✦</div>
-        <h3>Заявка отправлена</h3>
-        <p>Я свяжусь с вами в ближайшее время.<br>Спасибо за доверие.</p>
+        <h3 data-i18n="success_title">Заявка отправлена</h3>
+        <p data-i18n="success_text">Я свяжусь с вами в ближайшее время.<br>Спасибо за доверие.</p>
       </div>
     </div>
   </div>
@@ -1823,67 +1889,511 @@
 <footer>
   <div class="footer-inner">
     <div>
-      <div class="footer-brand">Лана <em>Монсеф</em></div>
-      <p style="font-family:var(--font-sans); font-size:0.72rem; color:rgba(245,240,232,0.4); margin-top:0.5rem; letter-spacing:0.1em;">Психолог · Психотерапевт</p>
+      <div class="footer-brand" id="footerBrand">Лана <em>Монсеф</em></div>
+      <p style="font-family:var(--font-sans); font-size:0.72rem; color:rgba(245,240,232,0.4); margin-top:0.5rem; letter-spacing:0.1em;" data-i18n="footer_tagline">Рекурсивный психолог</p>
     </div>
-    <p class="footer-note">
+    <p class="footer-note" data-i18n="footer_note">
       Консультации онлайн из любой точки мира, а также очно в Риге (Латвия) и Лондоне (Великобритания). Продолжительность сессии — 60 минут.
     </p>
     <div style="display:flex; flex-direction:column; gap:0.4rem; text-align:right;">
-      <a href="#contact" style="color:var(--gold-light); font-family:var(--font-sans); font-size:0.78rem; text-decoration:none; letter-spacing:0.1em;">Записаться →</a>
+      <a href="#contact" style="color:var(--gold-light); font-family:var(--font-sans); font-size:0.78rem; text-decoration:none; letter-spacing:0.1em;" data-i18n="footer_cta">Записаться →</a>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 Lana Monsef. Все права защищены.</span>
-    <span>Рига · Лондон · Онлайн</span>
+    <span>© 2026 Lana Monsef. <span data-i18n="footer_rights">Все права защищены.</span></span>
+    <div style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;">
+      <span data-i18n="footer_locations">Рига · Лондон · Онлайн</span>
+      <span style="opacity:0.3">·</span>
+      <a href="#" onclick="openModal('privacyModal');return false;" style="color:rgba(245,240,232,0.45);font-family:var(--font-sans);font-size:0.72rem;text-decoration:none;" data-i18n="footer_privacy">Конфиденциальность</a>
+      <span style="opacity:0.3">·</span>
+      <a href="#" onclick="openModal('cookiesModal');return false;" style="color:rgba(245,240,232,0.45);font-family:var(--font-sans);font-size:0.72rem;text-decoration:none;" data-i18n="footer_cookies">Cookies</a>
+    </div>
+    <div class="lang-switcher lang-switcher-footer">
+      <button class="lang-btn" onclick="setLang('ru')">RU</button>
+      <span class="lang-sep">·</span>
+      <button class="lang-btn" onclick="setLang('lv')">LV</button>
+      <span class="lang-sep">·</span>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
   </div>
 </footer>
 
 
-<script>
-  // NAV scroll effect
-  const nav = document.getElementById('mainNav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-  });
 
+<!-- ── PRIVACY POLICY MODAL ── -->
+<div class="modal-overlay" id="privacyModal" onclick="closeModalOutside(event,'privacyModal')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('privacyModal')" aria-label="Закрыть">×</button>
+    <h2 data-i18n="pp_title">Политика <em>конфиденциальности</em></h2>
+    <p class="modal-date" data-i18n="pp_date">Последнее обновление: январь 2026</p>
+    <h3 data-i18n="pp_h1">1. Кто мы</h3>
+    <p data-i18n="pp_p1">Лана Монсеф — частнопрактикующий рекурсивный психолог. Сайт lanamonsef.com является личным профессиональным сайтом и не является организацией. Контактный адрес: info@lanamonsef.com</p>
+    <h3 data-i18n="pp_h2">2. Какие данные мы собираем</h3>
+    <p data-i18n="pp_p2">При отправке формы обратной связи мы получаем имя, номер телефона или WhatsApp, адрес электронной почты и текст сообщения, которое вы вводите добровольно. Никакие данные не собираются автоматически без вашего ведома.</p>
+    <h3 data-i18n="pp_h3">3. Как мы используем данные</h3>
+    <p data-i18n="pp_p3">Полученные данные используются исключительно для ответа на ваш запрос и организации консультации. Данные не передаются третьим лицам, не используются в рекламных целях и не обрабатываются автоматизированными системами принятия решений.</p>
+    <h3 data-i18n="pp_h4">4. Хранение данных</h3>
+    <p data-i18n="pp_p4">Данные хранятся только в течение времени, необходимого для ответа на ваш запрос. После завершения переписки данные удаляются по вашему запросу.</p>
+    <h3 data-i18n="pp_h5">5. Ваши права</h3>
+    <p data-i18n="pp_p5">Вы вправе в любой момент запросить доступ к своим данным, их исправление или удаление. Для этого напишите на info@lanamonsef.com. Мы ответим в течение 30 дней.</p>
+    <h3 data-i18n="pp_h6">6. Cookies</h3>
+    <p data-i18n="pp_p6">Подробнее об использовании cookies см. в <a href="#" onclick="closeModal('privacyModal');openModal('cookiesModal');return false;" style="color:var(--taupe-dark);" data-i18n="pp_p6_link">Политике cookies</a>.</p>
+  </div>
+</div>
+
+<!-- ── COOKIES MODAL ── -->
+<div class="modal-overlay" id="cookiesModal" onclick="closeModalOutside(event,'cookiesModal')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('cookiesModal')" aria-label="Закрыть">×</button>
+    <h2 data-i18n="ck_title">Политика <em>cookies</em></h2>
+    <p class="modal-date" data-i18n="ck_date">Последнее обновление: январь 2026</p>
+    <h3 data-i18n="ck_h1">Что такое cookies</h3>
+    <p data-i18n="ck_p1">Cookies — это небольшие текстовые файлы, которые сохраняются в вашем браузере при посещении сайта. Они позволяют сайту запомнить ваши предпочтения и улучшить работу.</p>
+    <h3 data-i18n="ck_h2">Какие cookies мы используем</h3>
+    <ul>
+      <li data-i18n="ck_li1"><strong>Необходимые:</strong> требуются для корректной работы сайта (например, сохранение вашего выбора языка и согласия на cookies). Не могут быть отключены.</li>
+      <li data-i18n="ck_li2"><strong>Аналитические:</strong> в настоящее время не используются. Если это изменится, мы запросим ваше согласие отдельно.</li>
+      <li data-i18n="ck_li3"><strong>Маркетинговые:</strong> не используются.</li>
+    </ul>
+    <h3 data-i18n="ck_h3">Как управлять cookies</h3>
+    <p data-i18n="ck_p3">Вы можете удалить или заблокировать cookies через настройки браузера. Обратите внимание, что отключение необходимых cookies может повлиять на работу сайта.</p>
+    <h3 data-i18n="ck_h4">Срок хранения</h3>
+    <p data-i18n="ck_p4">Cookie согласия хранится 12 месяцев. По истечении этого срока мы снова запросим ваше согласие.</p>
+  </div>
+</div>
+
+<!-- ── COOKIE BANNER ── -->
+<div class="cookie-banner" id="cookieBanner">
+  <p class="cookie-text" id="cookieText">
+    Этот сайт использует только необходимые cookies. Подробнее — в нашей <a onclick="openModal('cookiesModal')" style="color:var(--gold-light);text-decoration:underline;cursor:pointer;">Политике cookies</a>.
+  </p>
+  <div class="cookie-actions">
+    <button class="cookie-decline" onclick="dismissCookie()" data-i18n="cookie_decline">Отклонить</button>
+    <button class="cookie-accept" onclick="acceptCookie()" data-i18n="cookie_accept">Принять</button>
+  </div>
+</div>
+
+
+<script>
+  // NAV scroll
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
 
   // Cursor glow
   const glow = document.getElementById('cursorGlow');
-  document.addEventListener('mousemove', e => {
-    glow.style.left = e.clientX + 'px';
-    glow.style.top = e.clientY + 'px';
-  });
-
+  document.addEventListener('mousemove', e => { glow.style.left = e.clientX+'px'; glow.style.top = e.clientY+'px'; });
 
   // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-  reveals.forEach(el => observer.observe(el));
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-
-  // Form submit
+  // Form
   function submitForm() {
     document.getElementById('formArea').style.display = 'none';
     document.getElementById('formSuccess').style.display = 'block';
   }
 
-
-  // Smooth scroll for nav links
+  // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+
+  // MODALS
+  function openModal(id) { document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeModal(id) { document.getElementById(id).classList.remove('open'); document.body.style.overflow=''; }
+  function closeModalOutside(e, id) { if (e.target === document.getElementById(id)) closeModal(id); }
+
+  // COOKIE BANNER
+  function acceptCookie() { localStorage.setItem('cookie_consent','accepted'); document.getElementById('cookieBanner').classList.remove('visible'); }
+  function dismissCookie() { localStorage.setItem('cookie_consent','declined'); document.getElementById('cookieBanner').classList.remove('visible'); }
+
+  // ── TRANSLATIONS ──
+  const T = {
+    ru: {
+      nav_about:'Обо мне', nav_spec:'Направления', nav_services:'Услуги',
+      nav_process:'Как это работает', nav_cta:'Записаться',
+      hero_eyebrow:'Рекурсивный психолог · Рига & Лондон',
+      heroTitle_html:'Ваше безопасное<br><em>пространство</em> для роста',
+      hero_sub:'Я Лана Монсеф — практикующий рекурсивный психолог. Помогаю людям понять себя, справиться с тревогой и найти внутренний баланс. Консультации онлайн и очно в Риге и Лондоне.',
+      hero_btn_primary:'Записаться на приём', hero_btn_outline:'Узнать больше',
+      hero_location_bar:'Рига · Лондон · Онлайн',
+      badge_years:'лет практики',
+      marquee: ['Тревожность','Панические атаки','ПТСР','Выгорание','ОКР','Фобии','Отношения','Самооценка','Онлайн-консультации','Рига · Лондон'],
+      about_label:'Обо мне',
+      aboutTitle_html:'С душой<br><em>и опытом</em>',
+      about_text1:'Моя практика строится на доверии, уважении и искреннем желании помочь каждому клиенту. Я убеждена: каждый человек обладает внутренними ресурсами для роста — моя задача помочь их раскрыть.',
+      about_quote:'«Обращение за помощью — это не слабость. Это мужество заботиться о себе.»',
+      about_text2:'Работаю с широким спектром психологических запросов: тревожность, стресс, страхи, панические атаки, эмоциональное выгорание, сложности в отношениях. Использую доказательные методы психотерапии без медикаментов, адаптируя подход под каждого человека индивидуально.',
+      tag1:'КПТ', tag2:'Арт-терапия', tag3:'Аутотренинг', tag4:'Релаксационные техники', tag5:'Саморегуляция', tag6:'Клиническая беседа',
+      spec_label:'Направления работы',
+      specTitle_html:'С чем я<br><em>помогаю</em>',
+      spec_intro:'Каждый запрос уникален — и именно с этим я работаю. Не знаете, как назвать своё состояние? Не страшно. Напишите мне, и вместе мы найдём точку входа.',
+      spec1_name:'Тревога и неврозы', spec2_name:'Панические атаки и фобии',
+      spec3_name:'ПТСР и психотравмы', spec4_name:'Стресс и выгорание', spec5_name:'Отношения и семья',
+      spec1_desc:'Тревожность, постоянное напряжение, навязчивые мысли, ОКР — помогаю найти причину состояния и выработать устойчивые стратегии.',
+      spec2_desc:'Страх смерти, страх потери контроля, полётов, высоты, социальные страхи — работаю с телесными и когнитивными проявлениями.',
+      spec3_desc:'Психологическая помощь после травматических событий: снижение тревоги, восстановление эмоциональной стабильности и чувства безопасности.',
+      spec4_desc:'Хроническая усталость, бессонница, эмоциональное истощение — помогаю восстановить баланс и вернуть ощущение смысла.',
+      spec5_desc:'Конфликты в паре, сложности в общении, неуверенность в себе, социофобия — работаем с корневыми причинами и строим новые паттерны.',
+      methods_label:'Как я работаю',
+      methodsTitle_html:'Методы<br><em>терапии</em>',
+      methods_intro:'В своей работе я использую современные научно обоснованные методы психологического консультирования и психотерапии — без медикаментов. Подход всегда адаптируется под конкретного человека.',
+      method1:'Когнитивно-поведенческая терапия (КПТ) — работа с мышлением и поведенческими паттернами, формирующими тревогу и стресс.',
+      method2:'Клиническая беседа — глубокое исследование внутреннего мира клиента как основа для понимания причин состояния.',
+      method3:'Техники релаксации и аутотренинг — практические инструменты для управления тревогой в повседневной жизни.',
+      method4:'Арт-терапия — творческое выражение как путь к осознанию глубинных переживаний.',
+      method5:'Психологическая саморегуляция — навыки, которые работают за рамками терапии, в реальной жизни.',
+      methods_caption:'«Понять себя — первый шаг к свободе»',
+      services_label:'Услуги и цены',
+      servicesTitle_html:'Форматы работы<br><em>и стоимость</em>',
+      price1_label:'Онлайн', price1_name:'Онлайн-консультация', price1_loc:'WhatsApp / Zoom · Весь мир',
+      price2_label:'Очно · Рига', price2_name:'Приём в Риге', price2_loc:'Тихий центр, Латвия',
+      price3_label:'Очно · Лондон', price3_name:'Приём в Лондоне', price3_loc:'London, United Kingdom',
+      price_per:'60 минут · одна сессия', pricing_btn:'Записаться',
+      price1_f1:'Индивидуальный формат', price1_f2:'Любая точка мира', price1_f3:'WhatsApp или Zoom', price1_f4:'Конфиденциально',
+      price2_f1:'Уютный кабинет в центре Риги', price2_f2:'Атмосфера полной безопасности', price2_f3:'Индивидуальный подход', price2_f4:'Возможны регулярные встречи',
+      price3_f1:'Личная встреча в Лондоне', price3_f2:'Профессиональная обстановка', price3_f3:'Индивидуальный подход', price3_f4:'Возможны регулярные встречи',
+      process_label:'Как это работает',
+      processTitle_html:'Ваш путь<br><em>к поддержке</em>',
+      step1_title:'Заявка', step2_title:'Знакомство', step3_title:'Сессии', step4_title:'Результат',
+      step1_desc:'Заполните форму или напишите в WhatsApp. Я отвечу в течение нескольких часов.',
+      step2_desc:'Первая беседа — знакомство, обсуждение вашего запроса и подбор формата работы.',
+      step3_desc:'Регулярные встречи — онлайн или очно. Частота подбирается индивидуально.',
+      step4_desc:'Вы замечаете изменения, учитесь управлять собой и обретаете внутреннее спокойствие.',
+      contact_label:'Контакты',
+      contactTitle_html:'Начните<br><em>прямо сейчас</em>',
+      contact_tagline:'Если вы чувствуете, что вам нужна поддержка — не откладывайте заботу о себе. Напишите мне, и мы найдём удобный формат работы.',
+      ci_whatsapp:'WhatsApp', ci_inperson:'Очный приём',
+      ci_locations:'Рига (Латвия) · Лондон (Великобритания)',
+      ci_online_label:'Онлайн', ci_online_text:'Консультации для клиентов по всему миру',
+      form_title:'Записаться на консультацию', form_subtitle:'Я свяжусь с вами в течение дня',
+      fl_name:'Ваше имя', fl_phone:'Телефон / WhatsApp', fl_email:'Электронная почта',
+      fl_topic:'Тема обращения', fl_message:'Расскажите немного о себе (необязательно)',
+      ph_name:'Как к вам обращаться?', ph_phone:'Номер', ph_message:'Что вас беспокоит?',
+      opt0:'Выберите тему', opt1:'Тревога и неврозы', opt2:'Панические атаки и фобии',
+      opt3:'ПТСР и психотравмы', opt4:'Стресс и выгорание', opt5:'Отношения и семья',
+      form_submit:'Отправить заявку',
+      success_title:'Заявка отправлена', success_text:'Я свяжусь с вами в ближайшее время. Спасибо за доверие.',
+      footer_tagline:'Рекурсивный психолог',
+      footer_note:'Консультации онлайн из любой точки мира, а также очно в Риге (Латвия) и Лондоне (Великобритания). Продолжительность сессии — 60 минут.',
+      footer_cta:'Записаться →', footer_locations:'Рига · Лондон · Онлайн',
+      footer_rights:'Все права защищены.', footer_privacy:'Конфиденциальность', footer_cookies:'Cookies',
+      cookie_text:'Этот сайт использует только необходимые cookies. Подробнее — в нашей ',
+      cookie_link:'Политике cookies',
+      cookie_decline:'Отклонить', cookie_accept:'Принять',
+      pp_title:'Политика конфиденциальности', pp_date:'Последнее обновление: январь 2026',
+      pp_h1:'1. Кто мы', pp_p1:'Лана Монсеф — частнопрактикующий рекурсивный психолог. Сайт является личным профессиональным сайтом. Контактный адрес: info@lanamonsef.com',
+      pp_h2:'2. Какие данные мы собираем', pp_p2:'При отправке формы мы получаем имя, телефон или WhatsApp, email и текст сообщения, которые вы вводите добровольно.',
+      pp_h3:'3. Как мы используем данные', pp_p3:'Данные используются исключительно для ответа на запрос. Они не передаются третьим лицам.',
+      pp_h4:'4. Хранение данных', pp_p4:'Данные хранятся только на время переписки и удаляются по вашему запросу.',
+      pp_h5:'5. Ваши права', pp_p5:'Вы можете запросить доступ, исправление или удаление данных. Напишите на info@lanamonsef.com — ответим в течение 30 дней.',
+      pp_h6:'6. Cookies', pp_p6:'Подробнее — в ', pp_p6_link:'Политике cookies',
+      ck_title:'Политика cookies', ck_date:'Последнее обновление: январь 2026',
+      ck_h1:'Что такое cookies', ck_p1:'Cookies — небольшие текстовые файлы, сохраняемые в браузере. Помогают запомнить ваши предпочтения.',
+      ck_h2:'Какие cookies мы используем',
+      ck_li1:'Необходимые: требуются для корректной работы сайта. Не могут быть отключены.',
+      ck_li2:'Аналитические: в настоящее время не используются.',
+      ck_li3:'Маркетинговые: не используются.',
+      ck_h3:'Как управлять cookies', ck_p3:'Удалить или заблокировать cookies можно через настройки браузера.',
+      ck_h4:'Срок хранения', ck_p4:'Cookie согласия хранится 12 месяцев.',
+    },
+
+    lv: {
+      nav_about:'Par mani', nav_spec:'Virzieni', nav_services:'Pakalpojumi',
+      nav_process:'Kā tas darbojas', nav_cta:'Pierakstīties',
+      hero_eyebrow:'Rekursīvā psiholoģe · Rīga & Londona',
+      heroTitle_html:'Jūsu droša<br><em>telpa</em> izaugsmei',
+      hero_sub:'Es esmu Lana Monsef — praktizējoša rekursīvā psiholoģe. Palīdzu cilvēkiem izprast sevi, tikt galā ar trauksmi un atrast iekšējo līdzsvaru. Konsultācijas tiešsaistē un klātienē Rīgā un Londonā.',
+      hero_btn_primary:'Pierakstīties uz konsultāciju', hero_btn_outline:'Uzzināt vairāk',
+      hero_location_bar:'Rīga · Londona · Tiešsaistē',
+      badge_years:'gadi praksē',
+      marquee: ['Trauksme','Panikas lēkmes','PTSS','Izdegšana','OKT','Fobijas','Attiecības','Pašvērtējums','Tiešsaistes konsultācijas','Rīga · Londona'],
+      about_label:'Par mani',
+      aboutTitle_html:'Ar sirdi<br><em>un pieredzi</em>',
+      about_text1:'Mana prakse balstās uz uzticību, cieņu un patiesu vēlmi palīdzēt katram klientam. Esmu pārliecināta: katram cilvēkam ir iekšējie resursi izaugsmei — mans uzdevums ir palīdzēt tos atklāt.',
+      about_quote:'«Palīdzības lūgšana nav vājums. Tā ir drosme rūpēties par sevi.»',
+      about_text2:'Strādāju ar plašu psiholoģisko problēmu loku: trauksme, stress, bailes, panikas lēkmes, emocionālā izdegšana, attiecību grūtības. Izmantoju uz pierādījumiem balstītas metodes bez medikamentiem, pielāgojot pieeju katram cilvēkam individuāli.',
+      tag1:'KBT', tag2:'Mākslas terapija', tag3:'Autogēnais treniņš', tag4:'Relaksācijas tehnikas', tag5:'Pašregulācija', tag6:'Klīniskā saruna',
+      spec_label:'Darba virzieni',
+      specTitle_html:'Ar ko es<br><em>palīdzu</em>',
+      spec_intro:'Katrs pieprasījums ir unikāls — un tieši ar to es strādāju. Nezināt, kā nosaukt savu stāvokli? Nekas. Rakstiet man, un kopā atradīsim pieeju.',
+      spec1_name:'Trauksme un neirozes', spec2_name:'Panikas lēkmes un fobijas',
+      spec3_name:'PTSS un psihotraumas', spec4_name:'Stress un izdegšana', spec5_name:'Attiecības un ģimene',
+      spec1_desc:'Trauksme, pastāvīga spriedze, uzmācīgas domas, OKT — palīdzu atrast stāvokļa cēloni un izstrādāt ilgtspējīgas stratēģijas.',
+      spec2_desc:'Bailes no nāves, bailes zaudēt kontroli, lidojumu, augstumu, sociālās bailes — strādāju ar ķermeņa un kognitīvajām izpausmēm.',
+      spec3_desc:'Psiholoģiskā palīdzība pēc traumatiskiem notikumiem: trauksmes mazināšana, emocionālās stabilitātes un drošības sajūtas atjaunošana.',
+      spec4_desc:'Hronisks nogurums, bezmiegs, emocionāls izsīkums — palīdzu atjaunot līdzsvaru un atgūt jēgas sajūtu.',
+      spec5_desc:'Konflikti pārī, komunikācijas grūtības, nedrošība par sevi, sociofobija — strādājam ar pamatcēloņiem un veidojam jaunus modeļus.',
+      methods_label:'Kā es strādāju',
+      methodsTitle_html:'Terapijas<br><em>metodes</em>',
+      methods_intro:'Savā darbā izmantoju mūsdienīgas, uz pierādījumiem balstītas psiholoģiskās konsultēšanas metodes — bez medikamentiem. Pieeja vienmēr tiek pielāgota konkrētam cilvēkam.',
+      method1:'Kognitīvi biheiviorālā terapija (KBT) — darbs ar domāšanas un uzvedības modeļiem, kas veido trauksmi un stresu.',
+      method2:'Klīniskā saruna — dziļa klienta iekšējās pasaules izpēte kā pamats stāvokļa cēloņu izpratnei.',
+      method3:'Relaksācijas tehnikas un autogēnais treniņš — praktiski rīki trauksmes pārvaldīšanai ikdienā.',
+      method4:'Mākslas terapija — radošā pašizpausme kā ceļš uz dziļo pārdzīvojumu apzināšanos.',
+      method5:'Psiholoģiskā pašregulācija — prasmes, kas darbojas ārpus terapijas, reālajā dzīvē.',
+      methods_caption:'«Izprast sevi — pirmais solis uz brīvību»',
+      services_label:'Pakalpojumi un cenas',
+      servicesTitle_html:'Darba formāti<br><em>un izmaksas</em>',
+      price1_label:'Tiešsaistē', price1_name:'Tiešsaistes konsultācija', price1_loc:'WhatsApp / Zoom · Visa pasaule',
+      price2_label:'Klātienē · Rīgā', price2_name:'Vizīte Rīgā', price2_loc:'Klusais centrs, Latvija',
+      price3_label:'Klātienē · Londonā', price3_name:'Vizīte Londonā', price3_loc:'London, United Kingdom',
+      price_per:'60 minūtes · viena sesija', pricing_btn:'Pierakstīties',
+      price1_f1:'Individuāls formāts', price1_f2:'Jebkura pasaules vieta', price1_f3:'WhatsApp vai Zoom', price1_f4:'Konfidenciāli',
+      price2_f1:'Mājīgs kabinets Rīgas centrā', price2_f2:'Pilnīgas drošības atmosfēra', price2_f3:'Individuāla pieeja', price2_f4:'Iespējamas regulāras tikšanās',
+      price3_f1:'Personīga tikšanās Londonā', price3_f2:'Profesionāla vide', price3_f3:'Individuāla pieeja', price3_f4:'Iespējamas regulāras tikšanās',
+      process_label:'Kā tas darbojas',
+      processTitle_html:'Jūsu ceļš<br><em>uz atbalstu</em>',
+      step1_title:'Pieteikums', step2_title:'Iepazīšanās', step3_title:'Sesijas', step4_title:'Rezultāts',
+      step1_desc:'Aizpildiet veidlapu vai rakstiet WhatsApp. Atbildēšu dažu stundu laikā.',
+      step2_desc:'Pirmā saruna — iepazīšanās, jūsu pieprasījuma apspriešana un darba formāta izvēle.',
+      step3_desc:'Regulāras tikšanās — tiešsaistē vai klātienē. Biežums tiek noteikts individuāli.',
+      step4_desc:'Jūs pamanāt pārmaiņas, mācāties sevi pārvaldīt un atrodat iekšējo mieru.',
+      contact_label:'Kontakti',
+      contactTitle_html:'Sāciet<br><em>jau tagad</em>',
+      contact_tagline:'Ja jūtat, ka jums nepieciešams atbalsts — neatlikiet rūpes par sevi. Rakstiet man, un mēs atradīsim piemērotāko sadarbības formātu.',
+      ci_whatsapp:'WhatsApp', ci_inperson:'Klātienes vizīte',
+      ci_locations:'Rīga (Latvija) · Londona (Lielbritānija)',
+      ci_online_label:'Tiešsaistē', ci_online_text:'Konsultācijas klientiem visā pasaulē',
+      form_title:'Pierakstīties uz konsultāciju', form_subtitle:'Sazināšos ar jums dienas laikā',
+      fl_name:'Jūsu vārds', fl_phone:'Tālrunis / WhatsApp', fl_email:'E-pasta adrese',
+      fl_topic:'Konsultācijas tēma', fl_message:'Pastāstiet mazliet par sevi (nav obligāti)',
+      ph_name:'Kā pie jums vērsties?', ph_phone:'Numurs', ph_message:'Kas jūs uztrauc?',
+      opt0:'Izvēlieties tēmu', opt1:'Trauksme un neirozes', opt2:'Panikas lēkmes un fobijas',
+      opt3:'PTSS un psihotraumas', opt4:'Stress un izdegšana', opt5:'Attiecības un ģimene',
+      form_submit:'Nosūtīt pieteikumu',
+      success_title:'Pieteikums nosūtīts', success_text:'Sazināšos ar jums tuvākajā laikā. Paldies par uzticību.',
+      footer_tagline:'Rekursīvā psiholoģe',
+      footer_note:'Konsultācijas tiešsaistē no jebkuras pasaules vietas, kā arī klātienē Rīgā (Latvija) un Londonā (Lielbritānija). Sesijas ilgums — 60 minūtes.',
+      footer_cta:'Pierakstīties →', footer_locations:'Rīga · Londona · Tiešsaistē',
+      footer_rights:'Visas tiesības aizsargātas.', footer_privacy:'Privātuma politika', footer_cookies:'Sīkdatnes',
+      cookie_text:'Šī vietne izmanto tikai nepieciešamās sīkdatnes. Sīkāk — mūsu ',
+      cookie_link:'sīkdatņu politikā',
+      cookie_decline:'Noraidīt', cookie_accept:'Pieņemt',
+      pp_title:'Privātuma politika', pp_date:'Pēdējo reizi atjaunināts: 2026. gada janvāris',
+      pp_h1:'1. Kas mēs esam', pp_p1:'Lana Monsef ir privātpraksē strādājoša rekursīvā psiholoģe. Vietne ir personīga profesionāla mājaslapa. Kontaktadrese: info@lanamonsef.com',
+      pp_h2:'2. Kādus datus mēs vācam', pp_p2:'Aizpildot veidlapu, saņemam jūsu vārdu, tālruņa numuru vai WhatsApp, e-pastu un brīvprātīgi ievadīto ziņojumu.',
+      pp_h3:'3. Kā mēs izmantojam datus', pp_p3:'Dati tiek izmantoti tikai jūsu pieprasījuma apstrādei. Tie netiek nodoti trešajām pusēm.',
+      pp_h4:'4. Datu glabāšana', pp_p4:'Dati tiek glabāti tikai tik ilgi, cik nepieciešams, un dzēsti pēc jūsu pieprasījuma.',
+      pp_h5:'5. Jūsu tiesības', pp_p5:'Jums ir tiesības pieprasīt piekļuvi datiem, to labošanu vai dzēšanu. Rakstiet uz info@lanamonsef.com — atbildēsim 30 dienu laikā.',
+      pp_h6:'6. Sīkdatnes', pp_p6:'Sīkāka informācija — mūsu ', pp_p6_link:'sīkdatņu politikā',
+      ck_title:'Sīkdatņu politika', ck_date:'Pēdējo reizi atjaunināts: 2026. gada janvāris',
+      ck_h1:'Kas ir sīkdatnes', ck_p1:'Sīkdatnes ir nelielas teksta datnes, kas tiek saglabātas pārlūkprogrammā. Palīdz vietnei atcerēties jūsu preferences.',
+      ck_h2:'Kādas sīkdatnes mēs izmantojam',
+      ck_li1:'Nepieciešamās: vajadzīgas vietnes pareizai darbībai. Nevar tikt atspējotas.',
+      ck_li2:'Analītiskās: pašlaik netiek izmantotas.',
+      ck_li3:'Mārketinga: netiek izmantotas.',
+      ck_h3:'Kā pārvaldīt sīkdatnes', ck_p3:'Sīkdatnes var dzēst vai bloķēt pārlūkprogrammas iestatījumos.',
+      ck_h4:'Glabāšanas termiņš', ck_p4:'Piekrišanas sīkdatne tiek glabāta 12 mēnešus.',
+    },
+
+    en: {
+      nav_about:'About', nav_spec:'Areas', nav_services:'Services',
+      nav_process:'How it works', nav_cta:'Book a session',
+      hero_eyebrow:'Recursive psychologist · Riga & London',
+      heroTitle_html:'Your safe<br><em>space</em> to grow',
+      hero_sub:'I am Lana Monsef — a practising recursive psychologist. I help people understand themselves, manage anxiety and find inner balance. Sessions online and in person in Riga and London.',
+      hero_btn_primary:'Book a session', hero_btn_outline:'Learn more',
+      hero_location_bar:'Riga · London · Online',
+      badge_years:'years of practice',
+      marquee: ['Anxiety','Panic attacks','PTSD','Burnout','OCD','Phobias','Relationships','Self-esteem','Online sessions','Riga · London'],
+      about_label:'About me',
+      aboutTitle_html:'With heart<br><em>and experience</em>',
+      about_text1:'My practice is built on trust, respect and a genuine desire to help each client. I believe every person has inner resources for growth — my role is to help bring them to light.',
+      about_quote:'"Asking for help is not a weakness. It takes courage to care for yourself."',
+      about_text2:'I work with a wide range of psychological concerns: anxiety, stress, fears, panic attacks, emotional burnout and relationship difficulties. I use evidence-based approaches without medication, adapting the method to each individual.',
+      tag1:'CBT', tag2:'Art therapy', tag3:'Autogenic training', tag4:'Relaxation techniques', tag5:'Self-regulation', tag6:'Clinical conversation',
+      spec_label:'Areas of work',
+      specTitle_html:'What I<br><em>help with</em>',
+      spec_intro:'Every concern is unique — and that is exactly what I work with. Not sure how to name what you are feeling? That is fine. Get in touch, and together we will find a way in.',
+      spec1_name:'Anxiety & neurosis', spec2_name:'Panic attacks & phobias',
+      spec3_name:'PTSD & trauma', spec4_name:'Stress & burnout', spec5_name:'Relationships & family',
+      spec1_desc:'Anxiety, constant tension, intrusive thoughts, OCD — I help identify the root cause and develop lasting coping strategies.',
+      spec2_desc:'Fear of death, loss of control, flying, heights, social anxiety — working with both the physical and cognitive dimensions.',
+      spec3_desc:'Psychological support following traumatic events: reducing anxiety, restoring emotional stability and a sense of safety.',
+      spec4_desc:'Chronic fatigue, insomnia, emotional exhaustion — I help restore balance and reconnect with a sense of meaning.',
+      spec5_desc:'Relationship conflicts, communication difficulties, low self-esteem, social phobia — addressing root patterns and building new ones.',
+      methods_label:'How I work',
+      methodsTitle_html:'Therapy<br><em>methods</em>',
+      methods_intro:'I use modern, evidence-based methods of psychological counselling — without medication. The approach is always tailored to the individual.',
+      method1:'Cognitive Behavioural Therapy (CBT) — working with thinking patterns and behaviours that generate anxiety and stress.',
+      method2:'Clinical conversation — deep exploration of the client\'s inner world as the foundation for understanding their state.',
+      method3:'Relaxation techniques & autogenic training — practical tools for managing anxiety and stress in daily life.',
+      method4:'Art therapy — creative expression as a path to awareness of deeper feelings.',
+      method5:'Psychological self-regulation — skills that work beyond therapy, in real everyday life.',
+      methods_caption:'"Understanding yourself is the first step to freedom"',
+      services_label:'Services & pricing',
+      servicesTitle_html:'Formats<br><em>& fees</em>',
+      price1_label:'Online', price1_name:'Online session', price1_loc:'WhatsApp / Zoom · Worldwide',
+      price2_label:'In person · Riga', price2_name:'Session in Riga', price2_loc:'Quiet centre, Latvia',
+      price3_label:'In person · London', price3_name:'Session in London', price3_loc:'London, United Kingdom',
+      price_per:'60 minutes · single session', pricing_btn:'Book now',
+      price1_f1:'Individual format', price1_f2:'From anywhere in the world', price1_f3:'WhatsApp or Zoom', price1_f4:'Fully confidential',
+      price2_f1:'Cosy office in central Riga', price2_f2:'Atmosphere of complete safety', price2_f3:'Individual approach', price2_f4:'Regular sessions available',
+      price3_f1:'In-person meeting in London', price3_f2:'Professional setting', price3_f3:'Individual approach', price3_f4:'Regular sessions available',
+      process_label:'How it works',
+      processTitle_html:'Your path<br><em>to support</em>',
+      step1_title:'Enquiry', step2_title:'First meeting', step3_title:'Sessions', step4_title:'Progress',
+      step1_desc:'Fill in the form or message me on WhatsApp. I will reply within a few hours.',
+      step2_desc:'An introductory conversation — getting to know each other and choosing the right format.',
+      step3_desc:'Regular sessions — online or in person. Frequency is agreed individually.',
+      step4_desc:'You notice change, learn to manage yourself and find inner calm.',
+      contact_label:'Contact',
+      contactTitle_html:'Start<br><em>right now</em>',
+      contact_tagline:'If you feel you need support — do not put off taking care of yourself. Get in touch and we will find the right way to work together.',
+      ci_whatsapp:'WhatsApp', ci_inperson:'In-person sessions',
+      ci_locations:'Riga (Latvia) · London (United Kingdom)',
+      ci_online_label:'Online', ci_online_text:'Sessions for clients worldwide',
+      form_title:'Book a consultation', form_subtitle:'I will get back to you within the day',
+      fl_name:'Your name', fl_phone:'Phone / WhatsApp', fl_email:'Email address',
+      fl_topic:'Topic', fl_message:'Tell me a little about yourself (optional)',
+      ph_name:'What shall I call you?', ph_phone:'Number', ph_message:'What is on your mind?',
+      opt0:'Select a topic', opt1:'Anxiety & neurosis', opt2:'Panic attacks & phobias',
+      opt3:'PTSD & trauma', opt4:'Stress & burnout', opt5:'Relationships & family',
+      form_submit:'Send enquiry',
+      success_title:'Enquiry sent', success_text:'I will be in touch shortly. Thank you for reaching out.',
+      footer_tagline:'Recursive psychologist',
+      footer_note:'Online sessions from anywhere in the world, and in-person sessions in Riga (Latvia) and London (United Kingdom). Session duration — 60 minutes.',
+      footer_cta:'Book a session →', footer_locations:'Riga · London · Online',
+      footer_rights:'All rights reserved.', footer_privacy:'Privacy policy', footer_cookies:'Cookies',
+      cookie_text:'This website uses only essential cookies to function. Learn more in our ',
+      cookie_link:'cookie policy',
+      cookie_decline:'Decline', cookie_accept:'Accept',
+      pp_title:'Privacy policy', pp_date:'Last updated: January 2026',
+      pp_h1:'1. Who we are', pp_p1:'Lana Monsef is a self-employed recursive psychologist. This website is a personal professional site. Contact: info@lanamonsef.com',
+      pp_h2:'2. What data we collect', pp_p2:'When you submit the contact form, we receive your name, phone number or WhatsApp, email address and the message you voluntarily provide.',
+      pp_h3:'3. How we use your data', pp_p3:'Data is used solely to respond to your enquiry. It is never shared with third parties.',
+      pp_h4:'4. Data retention', pp_p4:'Data is kept only for as long as needed and will be deleted upon your request.',
+      pp_h5:'5. Your rights', pp_p5:'You have the right to access, correct or delete your data. Write to info@lanamonsef.com — we will respond within 30 days.',
+      pp_h6:'6. Cookies', pp_p6:'For details on cookies, see our ', pp_p6_link:'Cookie policy',
+      ck_title:'Cookie policy', ck_date:'Last updated: January 2026',
+      ck_h1:'What are cookies', ck_p1:'Cookies are small text files stored in your browser. They help the site remember your preferences.',
+      ck_h2:'Which cookies we use',
+      ck_li1:'Essential: required for the website to function correctly. Cannot be disabled.',
+      ck_li2:'Analytics: not currently used.',
+      ck_li3:'Marketing: not used.',
+      ck_h3:'How to manage cookies', ck_p3:'You can delete or block cookies through your browser settings.',
+      ck_h4:'Retention period', ck_p4:'The consent cookie is stored for 12 months.',
+    }
+  };
+
+  let currentLang = localStorage.getItem('site_lang') || 'ru';
+
+  function setLang(lang) {
+    currentLang = lang;
+    localStorage.setItem('site_lang', lang);
+    applyLang(lang);
+  }
+
+  const htmlEls = {
+    heroTitle:'heroTitle_html', aboutTitle:'aboutTitle_html', specTitle:'specTitle_html',
+    methodsTitle:'methodsTitle_html', servicesTitle:'servicesTitle_html',
+    processTitle:'processTitle_html', contactTitle:'contactTitle_html',
+  };
+
+  function applyLang(lang) {
+    const t = T[lang];
+    if (!t) return;
+
+    // Plain text
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined && !el.classList.contains('method-text')) {
+        el.textContent = t[key];
       }
     });
+
+    // innerHTML titles with <em>
+    Object.entries(htmlEls).forEach(([id, key]) => {
+      const el = document.getElementById(id);
+      if (el && t[key]) el.innerHTML = t[key];
+    });
+
+    // Modal h2 titles (replace as text since <em> becomes irrelevant after first textContent set)
+    const ppH2 = document.querySelector('#privacyModal .modal-box h2');
+    if (ppH2) ppH2.textContent = t.pp_title;
+    const ckH2 = document.querySelector('#cookiesModal .modal-box h2');
+    if (ckH2) ckH2.textContent = t.ck_title;
+
+    // pp_p6 with clickable link
+    const pp6 = document.querySelector('[data-i18n="pp_p6"]');
+    if (pp6 && t.pp_p6 && t.pp_p6_link) {
+      pp6.innerHTML = t.pp_p6 + '<a href="#" onclick="closeModal(\'privacyModal\');openModal(\'cookiesModal\');return false;" style="color:var(--taupe-dark);text-decoration:underline;">' + t.pp_p6_link + '</a>.';
+    }
+
+    // Method items (contain <strong>)
+    document.querySelectorAll('.method-text[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (!t[key]) return;
+      const text = t[key];
+      const dash = text.indexOf(' — ');
+      if (dash > -1) {
+        el.innerHTML = '<strong>' + text.substring(0, dash) + '</strong>' + text.substring(dash + 3);
+      } else { el.textContent = text; }
+    });
+
+    // Marquee — rebuild
+    const track = document.getElementById('marqueeTrack');
+    if (track && t.marquee) {
+      const doubled = [...t.marquee, ...t.marquee];
+      track.innerHTML = doubled.map(w => '<span>' + w + '</span>').join('');
+    }
+
+    // Form placeholders
+    const inps = {inp_name:'ph_name', inp_phone:'ph_phone', inp_message:'ph_message'};
+    Object.entries(inps).forEach(([id, key]) => {
+      const el = document.getElementById(id);
+      if (el && t[key]) el.placeholder = t[key];
+    });
+
+    // Select options
+    document.querySelectorAll('option[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (t[key]) el.textContent = t[key];
+    });
+
+    // Cookie banner with link
+    const cookieP = document.getElementById('cookieText');
+    if (cookieP && t.cookie_text && t.cookie_link) {
+      cookieP.innerHTML = t.cookie_text + '<a onclick="openModal(\'cookiesModal\')" style="color:var(--gold-light);text-decoration:underline;cursor:pointer;">' + t.cookie_link + '</a>.';
+    }
+
+    // Mobile hero location bar
+    const bar = document.getElementById('heroLocationBar');
+    if (bar && t.hero_location_bar) bar.textContent = t.hero_location_bar;
+
+    // Name: Cyrillic for RU, Latin for LV/EN
+    const navLogo = document.getElementById('navLogo');
+    const footerBrand = document.getElementById('footerBrand');
+    const captionAuthor = document.getElementById('captionAuthor');
+    if (lang === 'ru') {
+      if (navLogo) navLogo.innerHTML = 'Лана <span>Монсеф</span>';
+      if (footerBrand) footerBrand.innerHTML = 'Лана <em>Монсеф</em>';
+      if (captionAuthor) captionAuthor.textContent = 'Лана Монсеф';
+    } else {
+      if (navLogo) navLogo.innerHTML = 'Lana <span>Monsef</span>';
+      if (footerBrand) footerBrand.innerHTML = 'Lana <em>Monsef</em>';
+      if (captionAuthor) captionAuthor.textContent = 'Lana Monsef';
+    }
+
+    // Lang buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
+    });
+
+    document.documentElement.lang = lang;
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    applyLang(currentLang);
+    if (!localStorage.getItem('cookie_consent')) {
+      setTimeout(() => document.getElementById('cookieBanner').classList.add('visible'), 1400);
+    }
   });
 </script>
 </body>
